@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动生成12个大写字符串</title>
+</head>
+<body>
+<h1>12个大写字母</h1>
+<div>
+</div>
+<button onclick="random_A()">刷新</button>
+<script>
+    window.onload = random_A;
+    function random_A() {
+        let str = '';
+        for(let i = 1;i<=12;i++){
+            str = str +String.fromCharCode(Math.floor(Math.random()*24+65));
+        }
+        document.getElementsByTagName("div")[0].innerText = str;
+    }
+</script>
+</body>
+</html>
