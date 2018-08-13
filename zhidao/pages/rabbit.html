@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兔子放胡萝卜在房间的中间</title>
+</head>
+<body>
+<h1>题目：</h1>
+<h2>有一只兔子，它能进行的动作只有左转90度，放胡萝卜，取胡萝卜，前进，判断当前位置是否有胡萝卜，判断前面是否到墙壁。<br>
+现在这只兔子有无限多的胡萝卜，它背靠强而战，需要将胡萝卜放到中间，请用编程的办法解决。
+</h2>
+<script>
+
+    console.debug(function () {
+        let wall = ['0','0','0','0','0'];//建立一堵新的墙,0代表没有胡萝卜，1代表有胡萝卜,下标0和4代表墙壁
+        let direction = 1; //当前朝着哪个方向
+
+        let index = 0; //当前的位置
+        place(index); // 放置胡萝卜
+        while (1){
+            if(!wall_end(index)){
+                console.log("当前位置",index);
+                index = index + direction;
+                if(check(index)){
+                    take(index);
+                    direction = left_180(direction);
+                    index = index +direction;
+                    if(check(index)){
+                        index = index + direction;
+                        take(index);
+                        break;
+                    }
+                    place(index);
+                }
+                if(wall_end(index)){
+                    direction = left_180(direction);
+                    place(index);
+                }
+
+            }
+        }
+
+
+        //判断是否是墙壁
+        function wall_end(i) {
+            return i == 0 || i==4 ? true:false;
+        }
+
+        //左转180度（两个90度）
+        function left_180(direction) {
+            return direction = direction*-1;
+        }
+
+        //放胡萝卜
+        function place(i) {
+            wall[i]='1';
+        }
+
+        //拿胡萝卜
+        function take(i) {
+            wall[i]='0';
+        }
+
+        function check(index) {
+            return wall[index] == '1' ? true : false;
+        }
+
+        console.log(wall);
+    });
+
+
+</script>
+</body>
+</html>

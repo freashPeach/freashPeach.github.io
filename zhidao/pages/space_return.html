@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>空格符号转义</title>
+    <style>
+        a{
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<a href="#">赋值前</a><br>
+<input type="text" placeholder="请输入文本">
+<button onclick="space()">给A标记赋值</button>
+<script>
+    function space() {
+        let val = document.getElementsByTagName("input")[0].value;
+        let re_val = '';
+        for(v of val){
+            if(v == ' '){
+                v = '&nbsp;';
+            }
+            re_val = re_val + v;
+        }
+        document.getElementsByTagName("a")[0].innerHTML = re_val;
+    }
+</script>
+</body>
+</html>
