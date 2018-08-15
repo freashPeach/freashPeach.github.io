@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模仿百度</title>
+</head>
+<body>
+<input list="data" placeholder="请输入查询值" type="text">
+<datalist id="data">
+</datalist>
+<script>
+    var input = document.getElementsByTagName("input")[0];
+    var datalist = document.getElementById("data");
+    function cc(data) {
+        let list = data.s;
+        let option = '';
+        for(l of list){
+            option = option +`<option value="${l}">${l}</option>`;
+        }
+        datalist.innerHTML = option;
+    }
+    input.onkeyup = function () {
+        let url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+this.value+"&cb=cc";
+        let script = document.createElement("script");
+        script.src = url;
+        document.body.appendChild(script);
+        script.remove();
+    };
+
+</script>
+</body>
+</html>
